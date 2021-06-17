@@ -32,7 +32,7 @@ class mainClass extends React.Component {
     return (
       <div className="App">
         {this.state.data.map((item, index) => {
-          return <div key={index}>name: {item.name.first}</div>;
+          return <div key={index}><p>{item.name.first}</p></div>;
         })}
       </div>
     );

@@ -7,9 +7,11 @@ import spaceX from "../APIs/spaceX";
 
 function MainFunctional() {
   const [data, setData] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     user.getRandomUserNames().then((response) => {
+      console.log(response.data.results)
       setData(response.data.results);
     });
     // spaceX.latest().then((response) => {
@@ -28,11 +30,32 @@ function MainFunctional() {
 
   return (
     <div className="App">
-      {data.map((item, index) => {
-        return <div key={index}>name: {item.name.first}</div>;
+      <input
+            type="text"
+            id="header-search"
+            placeholder="Search..."
+            onChange={event=> {setSearchTerm(event.target.value)}}
+            name="s" 
+        />
+      {data.filter((val) => {
+        if (searchTerm == "") {
+          return val
+        }else if (val.name.first.includes(searchTerm)) {
+          return val
+        }
+      }).map((item, index) => {
+        return  <div className="user" key={index}><p>{item.name.first}</p></div>;
       })}
     </div>
   );
 }
 
 export default MainFunctional;
+
+// .filter((item) => {
+//   if (searchTerm == "") {
+//     return item
+//   } else if (item.name.first.toLowercase().includes(searchTerm.toLowerCase())){
+//     return item
+//   }
+// })
