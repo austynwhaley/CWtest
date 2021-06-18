@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
+import "../../src"
 import user from "../APIs/user";
 import cats from "../APIs/cats";
-import countries from "../APIs/countries";
-import covid from "../APIs/covid";
-import spaceX from "../APIs/spaceX";
+import NameBtn from "../components/NameBtn/index"
+import { Container, Col, Row } from "./Grid/index";
 
 function MainFunctional() {
   const [data, setData] = useState([]);
+  const [cat, setCat] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
@@ -14,48 +15,44 @@ function MainFunctional() {
       console.log(response.data.results)
       setData(response.data.results);
     });
-    // spaceX.latest().then((response) => {
-    //   console.log("got spaceX", response.data);
-    // });
-    // cats.getRandomCat().then((response) => {
-    //   console.log("got random cat: ", response);
-    // });
-    // countries.getCountries().then((response) => {
-    //   console.log("got countries", response);
-    // });
-    // covid.getCurrentCovidStats().then((response) => {
-    //   console.log("got covid", response);
-    // });
+    cats.getRandomCat().then((response) => {
+      console.log(response.data);
+    });
+  
   }, []);
 
   return (
-    <div className="App">
+    <Container>
+      <div className="App">
+      <Row>
       <input
-            type="text"
-            id="header-search"
-            placeholder="Search..."
-            onChange={event=> {setSearchTerm(event.target.value)}}
-            name="s" 
-        />
-      {data.filter((val) => {
+          type="text"
+          id="header-search"
+          placeholder="Search Names..."
+          onChange={event=> {setSearchTerm(event.target.value)}}
+          name="s" 
+      />
+      </Row>
+      <Row>
+        <Col className="names" size="lg-12 xl-12 mx-auto">
+        {data.filter((val) => {
+        let firstName = JSON.stringify(val.name.first)
         if (searchTerm == "") {
           return val
-        }else if (val.name.first.includes(searchTerm)) {
+        }else if (firstName.toLowerCase().includes(searchTerm.toLowerCase())) {
           return val
         }
-      }).map((item, index) => {
-        return  <div className="user" key={index}><p>{item.name.first}</p></div>;
+      }).map((item,index) => {
+        return  <NameBtn 
+                key={index} 
+                name={item.name.first}/>
       })}
+        </Col>
+      </Row>
     </div>
+    </Container>
+    
   );
 }
 
 export default MainFunctional;
-
-// .filter((item) => {
-//   if (searchTerm == "") {
-//     return item
-//   } else if (item.name.first.toLowercase().includes(searchTerm.toLowerCase())){
-//     return item
-//   }
-// })
