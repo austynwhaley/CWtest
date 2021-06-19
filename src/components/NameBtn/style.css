@@ -4,3 +4,17 @@ input {
  height: 40px;
  font-size: 20px;
 }
+.delete{
+    position: relative;
+    color: whitesmoke;
+    float: right;
+    background-color: transparent;
+    top: -20px;
+    right: -20px;
+    border-radius: 20px;
+    border: transparent;
+}
+
+.name{
+    font-size: 18px;
+}

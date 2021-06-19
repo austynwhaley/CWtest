@@ -3,7 +3,6 @@ import "../src/index.css"
 import { render } from "react-dom";
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import MainClass from "./components/mainClass";
 import MainFunctional from "./components/mainFunctional";
 class App extends Component {
   render() {

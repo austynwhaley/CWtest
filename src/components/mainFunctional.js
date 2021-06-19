@@ -12,11 +12,10 @@ function MainFunctional() {
 
   useEffect(() => {
     user.getRandomUserNames().then((response) => {
-      console.log(response.data.results)
       setData(response.data.results);
     });
     cats.getRandomCat().then((response) => {
-      console.log(response.data);
+      setCat(response.data[0]);
     });
   
   }, []);
@@ -24,6 +23,9 @@ function MainFunctional() {
   return (
     <Container>
       <div className="App">
+        <Row>
+          <img className="catImg" src={cat.url}/>
+        </Row>
       <Row>
       <input
           type="text"
