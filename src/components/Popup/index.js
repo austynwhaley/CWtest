@@ -6,7 +6,7 @@ function Popup(props) {
         <div className="popup">
             <div className="popup-inner">
                 {props.children}
-                <button style={{borderRadius: "15px", width: "175px", marginLeft: "190px"}} onClick={() => window.location.reload() }>New Cat</button>
+                
                 <button className="close-btn" style={{marginLeft: "30px"}} onClick={() => props.setTrigger(false)}>close</button>
             </div>
             

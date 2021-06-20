@@ -4,6 +4,7 @@ import user from "../APIs/user";
 import cats from "../APIs/cats";
 import NameBtn from "../components/NameBtn/index"
 import Popup from "../components/Popup/index"
+import PlaySound from "../components/PlaySound"
 import { Container, Col, Row } from "./Grid/index";
 import Jumbotron from "./Jumbotron";
 
@@ -42,6 +43,7 @@ function MainFunctional() {
     <Container>
       <div className="App">
         <Jumbotron  src={`${process.env.PUBLIC_URL}/imgs/capture.png`} />
+        <PlaySound/>
         <Row>
           <Col size= "sm-3 mx-auto">
             <img className="catGif" src={`${process.env.PUBLIC_URL}/imgs/ezgif.com-gif-maker.gif`}/>
@@ -110,10 +112,14 @@ function MainFunctional() {
         })}
           </Col>
         </Row>
+        
+      
+    
 
         <Popup trigger = {popup} setTrigger={setPopup}>
           <h2 className="randomName" style={{marginLeft: "175px", marginTop: "70px"}}>Hello {catNames[Math.floor(Math.random()*catNames.length)]}! </h2>
         <img className="catImg" style={{marginLeft: "70px"}} src={cat.url}/>
+        <button style={{borderRadius: "15px", width: "175px", marginLeft: "190px"}} onClick={() => cats.getRandomCat().then((response) => {setCat(response.data[0]);}).then(setArray("")).then(setPopup(false)) }>New Cat</button>
         </Popup>
       </div>
     </Container>
