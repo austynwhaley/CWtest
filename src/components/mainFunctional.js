@@ -107,8 +107,9 @@ function MainFunctional() {
           <img className="catImg" style={{marginLeft: "70px"}} src={cat.url}/>
           <button 
             style={{borderRadius: "15px", width: "175px", marginLeft: "190px"}} 
-            onClick={() => cats.getRandomCat().then((response) => 
-            {setCat(response.data[0]);})
+            onClick={() => 
+            cats.getRandomCat().then((response) => {setCat(response.data[0]);})
+            .then(user.getRandomUserNames().then((response) => {setData(response.data.results);}))
             .then(setArray(""))
             .then(setPopup(false)) }>New Cat
           </button>
