@@ -19,10 +19,6 @@ function MainFunctional() {
     window.location.reload()
   }
 
-  const addName = () => {
-    setArray(oldArray => [...oldArray,`${catNames.length}`])
-    console.log(catNames)
-  }
 
   function  clearNames() {
     catNames.length = 0
@@ -91,7 +87,7 @@ function MainFunctional() {
         }).map((item,index) => {
           return  <NameBtn 
                   key={index} 
-                  onClick={addName}
+                  onClick={() => setArray(oldArray => [...oldArray,item.name.first])}
                   name={item.name.first}/>
         })}
           </Col>
