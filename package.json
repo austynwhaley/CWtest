@@ -1,13 +1,16 @@
 {
-  "name": "React-Axios-Inerview",
+  "name": "React-Axios-Interview",
   "version": "1.0.0",
   "description": "",
   "keywords": [],
   "homepage": "https://codesandbox.io/s/new",
   "main": "src/index.js",
   "dependencies": {
+    "@popmotion/popcorn": "^0.4.4",
     "axios": "0.18.0",
     "bootstrap": "^4.6.0",
+    "d3-shape": "^3.0.1",
+    "randomcolor": "^0.6.2",
     "react": "17.0.1",
     "react-bootstrap": "^1.6.1",
     "react-dom": "17.0.1",

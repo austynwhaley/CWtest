@@ -3,6 +3,8 @@ input {
  width: 300px;
  height: 40px;
  font-size: 20px;
+ border-radius: 10px;
+ border: transparent;
 }
 .delete{
     position: relative;
@@ -17,4 +19,8 @@ input {
 
 .name{
     font-size: 18px;
+}
+
+.nameBtns{
+    margin-top: 40px;
 }
