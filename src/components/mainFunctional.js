@@ -39,11 +39,26 @@ function MainFunctional() {
     <Container>
       <div className="App">
         <Jumbotron  src={`${process.env.PUBLIC_URL}/imgs/capture.png`} />
-        <button style={{borderRadius: "15px"}} onClick={refresh}>New Cat</button>
         <Row>
-          <Col size= "lg-1 mx-auto">
+          <Col size= "sm-3 mx-auto">
+            <img className="catGif" src='https://im7.ezgif.com/tmp/ezgif-7-656550116e54.gif'/>
+          </Col>
+          <Col size= "sm-6 mx-auto">
+          <button style={{borderRadius: "15px", width: "175px"}} onClick={refresh}>New Cat</button>
+          </Col>
+          <Col size= "sm-2 mx-auto">
+            <img className="catGif" src='https://media1.giphy.com/avatars/julianeasily/XgpXIhg4pL5V.gif'/>
+          </Col>
+          
+        
+        </Row>
+        
+        <Row>
+        
+          <Col size= "sm-8 mx-auto">
             <img className="catImg" src={cat.url}/>
           </Col>
+          
         </Row>
 
         <Row>
@@ -62,7 +77,7 @@ function MainFunctional() {
 
         <Row>
           <Col size= "-6 "><button  style={{marginTop: "30px"}}type="button" className=" clear btn btn btn-dark btn-lg">Name it!</button></Col>
-          <Col size= "xs-3 "> <button onClick={clearNames} style={{marginTop: "30px"}}type="button" className=" clear btn btn btn-danger btn-lg">Clear Names</button></Col>
+          <Col size= "xs-3 "> <button onClick={() => setArray("")} style={{marginTop: "30px"}}type="button" className=" clear btn btn btn-danger btn-lg">Clear Names</button></Col>
         </Row>
 
         <Row>
@@ -87,7 +102,7 @@ function MainFunctional() {
         }).map((item,index) => {
           return  <NameBtn 
                   key={index} 
-                  onClick={() => setArray(oldArray => [...oldArray,item.name.first])}
+                  onClick={() => setArray(array => [...array,item.name.first])}
                   name={item.name.first}/>
         })}
           </Col>

@@ -1,5 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body{
     background: #546fbb;
+    font-family: 'Press Start 2P', cursive;
 }
 
 .App {
@@ -25,6 +28,13 @@ button {
     width: 600px;
     border-radius: 20px ;
     box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.1);
+}
+
+.catGif{
+    height: 100px;
+    width: 75px;
+    display:flex;
+    align-items: center;
 }
 
 .header {
