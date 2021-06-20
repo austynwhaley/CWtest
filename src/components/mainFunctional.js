@@ -3,6 +3,7 @@ import "../../src"
 import user from "../APIs/user";
 import cats from "../APIs/cats";
 import NameBtn from "../components/NameBtn/index"
+import Popup from "../components/Popup/index"
 import { Container, Col, Row } from "./Grid/index";
 import Jumbotron from "./Jumbotron";
 
@@ -14,6 +15,8 @@ function MainFunctional() {
   const [cat, setCat] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   const [catNames, setArray] = useState([])
+  const [popup, setPopup] = useState(false)
+  const [audio, setAudio] = useState(true)
 
   function refresh() {
     window.location.reload()
@@ -41,7 +44,7 @@ function MainFunctional() {
         <Jumbotron  src={`${process.env.PUBLIC_URL}/imgs/capture.png`} />
         <Row>
           <Col size= "sm-3 mx-auto">
-            <img className="catGif" src='https://im7.ezgif.com/tmp/ezgif-7-656550116e54.gif'/>
+            <img className="catGif" src={`${process.env.PUBLIC_URL}/imgs/ezgif.com-gif-maker.gif`}/>
           </Col>
           <Col size= "sm-6 mx-auto">
           <button style={{borderRadius: "15px", width: "175px"}} onClick={refresh}>New Cat</button>
@@ -76,7 +79,7 @@ function MainFunctional() {
         </Row>
 
         <Row>
-          <Col size= "-6 "><button  style={{marginTop: "30px"}}type="button" className=" clear btn btn btn-dark btn-lg">Name it!</button></Col>
+          <Col size= "-6 "><button onClick={()=> setPopup(true)} style={{marginTop: "30px"}}type="button" className=" clear btn btn btn-dark btn-lg">Name it!</button></Col>
           <Col size= "xs-3 "> <button onClick={() => setArray("")} style={{marginTop: "30px"}}type="button" className=" clear btn btn btn-danger btn-lg">Clear Names</button></Col>
         </Row>
 
@@ -107,6 +110,11 @@ function MainFunctional() {
         })}
           </Col>
         </Row>
+
+        <Popup trigger = {popup} setTrigger={setPopup}>
+          <h2 className="randomName" style={{marginLeft: "175px", marginTop: "70px"}}>Hello {catNames[Math.floor(Math.random()*catNames.length)]}! </h2>
+        <img className="catImg" style={{marginLeft: "70px"}} src={cat.url}/>
+        </Popup>
       </div>
     </Container>
     
