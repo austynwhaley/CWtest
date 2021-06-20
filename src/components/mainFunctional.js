@@ -8,25 +8,15 @@ import PlaySound from "../components/PlaySound"
 import { Container, Col, Row } from "./Grid/index";
 import Jumbotron from "./Jumbotron";
 
-
-
-
 function MainFunctional() {
   const [data, setData] = useState([]);
   const [cat, setCat] = useState([])
   const [searchTerm, setSearchTerm] = useState("")
   const [catNames, setArray] = useState([])
   const [popup, setPopup] = useState(false)
-  const [audio, setAudio] = useState(true)
 
   function refresh() {
     window.location.reload()
-  }
-
-
-  function  clearNames() {
-    catNames.length = 0
-    console.log(catNames)
   }
  
   useEffect(() => {
@@ -55,7 +45,6 @@ function MainFunctional() {
             <img className="catGif" src='https://media1.giphy.com/avatars/julianeasily/XgpXIhg4pL5V.gif'/>
           </Col>
           
-        
         </Row>
         
         <Row>
@@ -112,15 +101,19 @@ function MainFunctional() {
         })}
           </Col>
         </Row>
-        
-      
-    
 
         <Popup trigger = {popup} setTrigger={setPopup}>
           <h2 className="randomName" style={{marginLeft: "175px", marginTop: "70px"}}>Hello {catNames[Math.floor(Math.random()*catNames.length)]}! </h2>
-        <img className="catImg" style={{marginLeft: "70px"}} src={cat.url}/>
-        <button style={{borderRadius: "15px", width: "175px", marginLeft: "190px"}} onClick={() => cats.getRandomCat().then((response) => {setCat(response.data[0]);}).then(setArray("")).then(setPopup(false)) }>New Cat</button>
+          <img className="catImg" style={{marginLeft: "70px"}} src={cat.url}/>
+          <button 
+            style={{borderRadius: "15px", width: "175px", marginLeft: "190px"}} 
+            onClick={() => cats.getRandomCat().then((response) => 
+            {setCat(response.data[0]);})
+            .then(setArray(""))
+            .then(setPopup(false)) }>New Cat
+          </button>
         </Popup>
+
       </div>
     </Container>
     
